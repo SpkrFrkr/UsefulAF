@@ -4,3 +4,16 @@ body.comfortable{--cell-y:13px}body.dragging-cols{cursor:col-resize;user-select:
 @media(max-width:950px){.shell{grid-template-columns:1fr}.sidebar{position:static}.sidebar #sheetNav{max-height:180px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}.side-foot{display:none}.top-meta{font-size:9px}.table-scroll{max-height:none}}
 @media(max-width:600px){.topbar{height:64px;padding:0 14px}.top-meta{display:none}.shell{padding:16px 12px 35px;gap:14px}.hero-line{align-items:flex-start}.hero-stats{padding-right:8px}.toolbar{flex-wrap:wrap}.searchbox{flex-basis:100%}.control-btn{height:38px}.table-topline{font-size:8px}.table-topline span:last-child{max-width:55%;text-align:right}footer{flex-direction:column}.brand b{font-size:17px}}
 .nav-item.active span:first-child{color:var(--category-color)!important}
+
+/* UsefulAF 2.0 fine-tuning */
+.settings[hidden]{display:none!important}
+.section-row td{font-size:var(--section-font,18px);font-weight:800;letter-spacing:1.5px;text-shadow:0 0 12px #ffe66d35}
+.section-heading{display:flex;align-items:center;gap:12px;min-height:var(--logo)}
+.section-heading .section-title-text{font:800 var(--section-font,18px)/1.25 Consolas,monospace;color:var(--yellow);letter-spacing:1.4px}
+.section-logo-control .resource-logo,.section-logo-control .logo-fallback{width:calc(var(--logo) + 8px);height:calc(var(--logo) + 8px);flex-basis:calc(var(--logo) + 8px);background:transparent;object-fit:contain;border-color:#ffe66d55}
+.sgdb-search{margin-left:auto;flex:0 0 auto;color:var(--cyan);font:700 9px Consolas,monospace;letter-spacing:1px;text-decoration:none;border:1px solid #27617a;padding:5px 8px}
+.sgdb-search:hover{color:var(--yellow);border-color:var(--yellow);box-shadow:0 0 10px #ffe66d30}
+.continuation-cell{position:relative;color:var(--pink);font:700 20px/1 Consolas,monospace;padding-left:22px!important}
+.continuation-cell:before{content:"";position:absolute;left:14px;top:-1px;bottom:-1px;border-left:1px solid #ff69cf66}
+.continuation-cell span{display:inline-block;text-shadow:0 0 9px #ff69cf77}
+@media(max-width:600px){.section-heading{gap:8px}.section-heading .section-title-text{font-size:calc(var(--section-font,18px)*.9)}.sgdb-search{font-size:8px;padding:4px 5px}}
