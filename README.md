@@ -20,6 +20,7 @@ Donations are of course welcome as well: https://ko-fi.com/spkrfrkr
 Direct links to my own modlist creations:
 
 PEAK modlist:
-- https://old.thunderstore.io/c/peak/p/SpkrFrkr/PEAK_REDUX/
+- https://old.thunderstore.io/c/peak/p/SpkrFrkr/PEAK_REDUX/\
+
 PEAK resource pack:
 - https://old.thunderstore.io/c/peak/p/SpkrFrkr/SPKR_FRKR_MIXTAPE/
