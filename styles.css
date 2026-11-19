@@ -39,3 +39,19 @@ tbody tr:hover:not(.section-row) td:first-child{box-shadow:inset 2px 0 #37e8ff55
 .section-row td{border-top:1px solid #ffe66d35;border-bottom:1px solid #ffe66d45;box-shadow:inset 0 1px #ffe66d0c,inset 0 -1px #ff4fc80a}
 .section-row .section-title-text{text-shadow:0 0 12px #ffe66d55}
 @media(max-width:600px){.table-shell:before{inset:3px}.table-topline{background:linear-gradient(90deg,#10283b,#171a2d)}}
+
+
+/* UsefulAF 2.0.4 refinements */
+/* Directory names and counts stay neutral white in every state. */
+#sheetNav .nav-item span:first-child,
+#sheetNav .nav-item.active span:first-child{color:#fff!important}
+#sheetNav .nav-count{color:#fff!important}
+.nav-item:hover{color:#fff;background:#102237}
+.nav-item.active{color:#fff}
+/* All source URLs share one consistent electric-blue link color. */
+.link-cell a{color:#4aaeff!important}
+.link-cell a:hover{color:#9bd7ff!important;text-shadow:0 0 9px #4aaeff66}
+/* Keep manual logo replacement available without the old initials tiles. */
+.logo-upload-empty{width:18px;height:22px;flex:0 0 18px;justify-content:center;align-items:center;color:var(--cyan);font:14px Consolas,monospace;opacity:.65}
+.logo-upload-empty:hover{color:var(--pink);opacity:1}
+.logo-upload-empty .resource-logo{display:none}
