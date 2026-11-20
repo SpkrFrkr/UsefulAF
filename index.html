@@ -8,20 +8,19 @@
 <body>
 <div class="scanlines" aria-hidden="true"></div>
 <header class="topbar">
-  <a class="brand" href="#top" aria-label="UsefulAF home"><span class="brand-copy"><span class="brand-title-row"><b>USEFUL<span>AF</span></b><small class="version-line" id="versionLabel">VERSION 2.0.5</small></span></span></a>
-  <div class="top-meta"><div class="status-line"><span class="live-dot"></span> DATABASE ONLINE <i></i> <span id="totalCount">0 RECORDS</span></div></div>
+  <a class="brand" href="#top" aria-label="UsefulAF home"><span class="brand-name">UsefulAF</span><span class="version-line" id="versionLabel">2.0.6</span></a>
+  <label class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="Search resources..." aria-label="Search all resources" autocomplete="off"></label>
+  <div class="top-meta"><div class="status-line"><span class="live-dot"></span><span>DATABASE ONLINE</span><span class="record-total" id="totalCount">0 RECORDS</span></div></div>
+  <button id="settingsToggle" class="settings-icon" type="button" aria-expanded="false" aria-controls="settingsPanel" aria-label="Display settings">⚙</button>
 </header>
 <main id="top" class="shell">
   <aside class="sidebar">
-    <div class="side-title">// INDEX DIRECTORY</div>
+    <div class="side-title">DIRECTORY</div>
     <nav id="sheetNav" aria-label="Database categories"></nav>
   </aside>
   <section class="workspace">
-    <div class="hero-line"><div><div class="kicker">// RESOURCE ARCHIVE / PUBLIC INDEX</div><h1 id="pageTitle">ALL RESOURCES</h1><p id="pageDescription" hidden></p></div><div class="hero-stats"><strong id="recordCount">0</strong><span>VISIBLE ROWS</span></div></div>
-    <div class="toolbar">
-      <label class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="SEARCH ALL CATEGORIES…" autocomplete="off"><kbd>GLOBAL</kbd></label>
-      <button id="settingsToggle" class="control-btn" type="button" aria-expanded="false" aria-controls="settingsPanel">DISPLAY SETTINGS <b>＋</b></button>
-    </div>
+    <div class="hero-line"><div><h1 id="pageTitle">ALL RESOURCES</h1><p id="pageDescription" hidden></p></div><div class="hero-stats"><strong id="recordCount">0</strong><span>VISIBLE ROWS</span></div></div>
+    
     <section id="settingsPanel" class="settings" hidden>
       <div class="setting"><label for="fontScale">TEXT SIZE</label><input id="fontScale" type="range" min="13" max="19" value="15"><output id="fontValue">15px</output></div>
       <div class="setting"><label for="density">ROW SPACING</label><select id="density"><option value="compact">Compact</option><option value="normal">Comfortable</option></select></div>
@@ -29,7 +28,7 @@
       <button id="resetSettings" class="control-btn reset" type="button">RESET DEFAULTS</button>
       <p class="settings-note">Column widths, order, text size, spacing and logo size are remembered on this device.</p>
     </section>
-    <div class="table-shell"><div class="table-topline"><span id="tableLabel">RESOURCE TABLE</span><span>DRAG COLUMN EDGES TO RESIZE · DRAG HEADERS TO REORDER</span></div>
+    <div class="table-shell"><div class="table-topline"><span id="tableLabel">RESOURCE TABLE</span><span> </span></div>
       <div class="table-scroll"><table id="resourceTable"><colgroup id="tableCols"></colgroup><thead><tr id="tableHead"></tr></thead><tbody id="tableBody"></tbody></table></div>
       <div id="emptyState" class="empty" hidden>NO MATCHES FOUND // TRY A DIFFERENT SEARCH TERM</div>
     </div>
