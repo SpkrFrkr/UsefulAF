@@ -4,7 +4,7 @@ const $=id=>document.getElementById(id);
 let db, activeSheet=0, searchTimer=null;
 let prefs=loadPrefs();
 const palette=['#37e8ff','#ff69cf','#72ffad','#ffe66d','#b58cff','#ff9b62'];
-function loadPrefs(){try{return JSON.parse(localStorage.getItem(SETTINGS_KEY))||{density:'compact',widths:{},orders:{}}}catch{return {density:'compact',widths:{},orders:{}}}}
+function loadPrefs(){try{const p=JSON.parse(localStorage.getItem(SETTINGS_KEY))||{};return {density:p.density||'compact',widths:p.widths||{},orders:p.orders||{}}}catch{return {density:'compact',widths:{},orders:{}}}}
 function savePrefs(){localStorage.setItem(SETTINGS_KEY,JSON.stringify(prefs))}
 function safeUrl(value){try{const u=new URL(value);return ['http:','https:'].includes(u.protocol)?u.href:null}catch{return null}}
 function isUrl(v){return !!safeUrl(String(v||'').trim())}
@@ -24,7 +24,7 @@ function headersLength(){return document.getElementById('tableHead').children.le
 function render(){renderNav();const q=$('searchInput').value.trim().toLowerCase();const global=!!q;let records=global?allRows().filter(x=>(x.sheet.name+' '+x.row.join(' ')).toLowerCase().includes(q)):db.sheets[activeSheet].rows.map((row,ri)=>({sheet:db.sheets[activeSheet],si:activeSheet,ri,row}));
  $('pageTitle').textContent=global?'SEARCH RESULTS':db.sheets[activeSheet].name;$('pageDescription').textContent='';$('tableLabel').textContent=global?'GLOBAL SEARCH TABLE':'CATEGORY RESOURCE TABLE';$('recordCount').textContent=records.length.toLocaleString();$('totalCount').textContent=`${allRows().length.toLocaleString()} SOURCE ROWS`;$('versionLabel').textContent=db.version||'2.0.6';
  const maxCols=Math.max(2,...records.map(x=>x.row.length));const headers=global?['Category','Name','Website',...Array.from({length:Math.max(0,maxCols-2)},(_,i)=>`Field ${i+3}`)]:['Name','Website',...Array.from({length:Math.max(0,maxCols-2)},(_,i)=>{const raw=db.sheets[activeSheet].headers?.[i+2]||`Field ${i+3}`;return raw==='Details'?'Description':raw})];
- let order=prefs.orders[global?'global':activeSheet]||headers.map((_,i)=>i);order=order.filter(i=>i<headers.length);headers.forEach((_,i)=>{if(!order.includes(i))order.push(i)});
+ prefs.orders=prefs.orders||{};prefs.widths=prefs.widths||{};let order=prefs.orders[global?'global':activeSheet]||headers.map((_,i)=>i);order=order.filter(i=>i<headers.length);headers.forEach((_,i)=>{if(!order.includes(i))order.push(i)});
  const cg=$('tableCols'),head=$('tableHead'),body=$('tableBody');cg.replaceChildren();head.replaceChildren();body.replaceChildren();
  order.forEach((colIndex,position)=>{const col=document.createElement('col');col.dataset.col=colIndex;col.style.width=(prefs.widths[(global?'g':'s'+activeSheet)+'-'+colIndex]|| (colIndex===0?'270px':colIndex===1?'300px':'210px'));cg.append(col);
  const th=document.createElement('th');th.textContent=headers[colIndex]||`Field ${colIndex+1}`;th.draggable=true;th.dataset.col=colIndex;th.addEventListener('dragstart',e=>{e.dataTransfer.setData('text/plain',String(colIndex));th.classList.add('dragging')});th.addEventListener('dragend',()=>th.classList.remove('dragging'));th.addEventListener('dragover',e=>{e.preventDefault();th.classList.add('drag-over')});th.addEventListener('dragleave',()=>th.classList.remove('drag-over'));th.addEventListener('drop',e=>{e.preventDefault();th.classList.remove('drag-over');const from=Number(e.dataTransfer.getData('text/plain'));const arr=[...order];const a=arr.indexOf(from),b=arr.indexOf(colIndex);if(a>=0&&b>=0){arr.splice(a,1);arr.splice(b,0,from);prefs.orders[global?'global':activeSheet]=arr;savePrefs();render()}});
@@ -36,7 +36,7 @@ function render(){renderNav();const q=$('searchInput').value.trim().toLowerCase(
 }
 function applyPrefs(){document.body.classList.toggle('comfortable',prefs.density==='normal');$('density').value=prefs.density}
 $('searchInput').addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(render,90)});
-$('settingsToggle').addEventListener('click',()=>{const panel=$('settingsPanel');panel.hidden=!panel.hidden;$('settingsToggle').setAttribute('aria-expanded',String(!panel.hidden));$('settingsToggle').querySelector('b').textContent=panel.hidden?'＋':'−'});
+$('settingsToggle').addEventListener('click',()=>{const panel=$('settingsPanel');panel.hidden=!panel.hidden;$('settingsToggle').setAttribute('aria-expanded',String(!panel.hidden))});
 $('density').addEventListener('change',e=>{prefs.density=e.target.value;applyPrefs();savePrefs()});
 $('resetSettings').addEventListener('click',()=>{prefs={density:'compact',widths:{},orders:{}};savePrefs();applyPrefs();render()});
 async function start(){try{const res=await fetch(DATA_URL);if(!res.ok)throw new Error('Could not load database');db=await res.json();applyPrefs();render()}catch(e){$('pageTitle').textContent='DATABASE OFFLINE';$('pageDescription').textContent='Open this website through GitHub Pages or a local web server. Do not open index.html directly.'}}
