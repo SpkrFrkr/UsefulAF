@@ -14,9 +14,6 @@ A database to find links to:
 - Useful Software & Websites
 - VR Mods
 
-I am always open to recommendations and can be found on Discord at: https://discord.gg/WENhpGJUa9 
-Donations are of course welcome as well: https://ko-fi.com/spkrfrkr
-
 Direct links to my own modlist creations:
 
 PEAK modlist:
@@ -24,3 +21,7 @@ PEAK modlist:
 
 PEAK resource pack:
 - https://old.thunderstore.io/c/peak/p/SpkrFrkr/SPKR_FRKR_MIXTAPE/
+
+Discord: https://discord.gg/WENhpGJUa9 
+
+Kofi Donations: https://ko-fi.com/spkrfrkr
