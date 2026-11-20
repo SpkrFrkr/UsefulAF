@@ -22,11 +22,9 @@
     <div class="hero-line"><div><h1 id="pageTitle">ALL RESOURCES</h1><p id="pageDescription" hidden></p></div><div class="hero-stats"><strong id="recordCount">0</strong><span>VISIBLE ROWS</span></div></div>
     <div class="search-row"><label class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="Search resources..." aria-label="Search all resources" autocomplete="off"></label></div>
     <section id="settingsPanel" class="settings" hidden>
-      <div class="setting"><label for="fontScale">TEXT SIZE</label><input id="fontScale" type="range" min="13" max="19" value="15"><output id="fontValue">15px</output></div>
       <div class="setting"><label for="density">ROW SPACING</label><select id="density"><option value="compact">Compact</option><option value="normal">Comfortable</option></select></div>
-      <div class="setting"><label for="logoSize">LOGO SIZE</label><input id="logoSize" type="range" min="18" max="40" value="26"><output id="logoValue">26px</output></div>
       <button id="resetSettings" class="control-btn reset" type="button">RESET DEFAULTS</button>
-      <p class="settings-note">Column widths, order, text size, spacing and logo size are remembered on this device.</p>
+      <p class="settings-note">Column widths, order and row spacing are remembered on this device.</p>
     </section>
     <div class="table-shell"><div class="table-topline"><span id="tableLabel">RESOURCE TABLE</span><span> </span></div>
       <div class="table-scroll"><table id="resourceTable"><colgroup id="tableCols"></colgroup><thead><tr id="tableHead"></tr></thead><tbody id="tableBody"></tbody></table></div>
@@ -34,6 +32,5 @@
     </div>
   </section>
 </main>
-<input id="logoPicker" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" hidden>
 <script src="app.js"></script>
 </body></html>
