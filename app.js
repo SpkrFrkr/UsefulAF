@@ -4,7 +4,7 @@ const $=id=>document.getElementById(id);
 let db, activeSheet=0, searchTimer=null;
 let prefs=loadPrefs();
 const palette=['#37e8ff','#ff69cf','#72ffad','#ffe66d','#b58cff','#ff9b62'];
-function loadPrefs(){try{const p=JSON.parse(localStorage.getItem(SETTINGS_KEY))||{};return {density:p.density||'compact',widths:p.widths||{},orders:p.orders||{}}}catch{return {density:'compact',widths:{},orders:{}}}}
+function loadPrefs(){try{const p=JSON.parse(localStorage.getItem(SETTINGS_KEY))||{};return {widths:p.widths||{},orders:p.orders||{}}}catch{return {widths:{},orders:{}}}}
 function savePrefs(){localStorage.setItem(SETTINGS_KEY,JSON.stringify(prefs))}
 function safeUrl(value){try{const u=new URL(value);return ['http:','https:'].includes(u.protocol)?u.href:null}catch{return null}}
 function isUrl(v){return !!safeUrl(String(v||'').trim())}
@@ -34,10 +34,9 @@ function render(){renderNav();const q=$('searchInput').value.trim().toLowerCase(
  order.forEach(index=>{if(global&&index===0){const cat=makeTextCell(sheet.name);cat.style.color=palette[si%palette.length];cat.style.fontWeight='700';cat.style.fontFamily='Consolas,monospace';tr.append(cat);return}const logical=global?index-1:index; if(logical===0){if(!info.title&&info.url){tr.append(makeContinuationCell())}else{const td=document.createElement('td');td.append(createLogoCell(row,si,ri,info.url));tr.append(td)}}else if(logical===1){const td=document.createElement('td');td.className='link-cell';info.urls.forEach((url,i)=>{if(i){const sep=document.createElement('span');sep.textContent=' · ';sep.style.color='var(--muted)';td.append(sep)}const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=url.replace(/^https?:\/\//,'');a.title=url;td.append(a)});tr.append(td)}else{const value=clean(row[logical]);tr.append(makeTextCell(isUrl(value)?'':value))}});body.append(tr)});
  $('emptyState').hidden=records.length!==0;
 }
-function applyPrefs(){document.body.classList.toggle('comfortable',prefs.density==='normal');$('density').value=prefs.density}
+function applyPrefs(){document.body.classList.remove('comfortable')}
 $('searchInput').addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(render,90)});
 $('settingsToggle').addEventListener('click',()=>{const panel=$('settingsPanel');panel.hidden=!panel.hidden;$('settingsToggle').setAttribute('aria-expanded',String(!panel.hidden))});
-$('density').addEventListener('change',e=>{prefs.density=e.target.value;applyPrefs();savePrefs()});
-$('resetSettings').addEventListener('click',()=>{prefs={density:'compact',widths:{},orders:{}};savePrefs();applyPrefs();render()});
+$('resetSettings').addEventListener('click',()=>{prefs={widths:{},orders:{}};savePrefs();applyPrefs();render()});
 async function start(){try{const res=await fetch(DATA_URL);if(!res.ok)throw new Error('Could not load database');db=await res.json();applyPrefs();render()}catch(e){$('pageTitle').textContent='DATABASE OFFLINE';$('pageDescription').textContent='Open this website through GitHub Pages or a local web server. Do not open index.html directly.'}}
 start();
