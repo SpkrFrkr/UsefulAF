@@ -8,8 +8,7 @@
 <body>
 <div class="scanlines" aria-hidden="true"></div>
 <header class="topbar">
-  <a class="brand" href="#top" aria-label="UsefulAF home"><span class="brand-name">UsefulAF</span><span class="version-line" id="versionLabel">2.0.6</span></a>
-  <label class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="Search resources..." aria-label="Search all resources" autocomplete="off"></label>
+  <a class="brand" href="#top" aria-label="UsefulAF home"><span class="brand-stack"><span class="brand-line"><span class="brand-name">UsefulAF</span><span class="version-line" id="versionLabel">2.0.7</span></span><span class="brand-tagline">CURATED BY SPKRFRKR</span></span></a>
   <div class="top-meta"><div class="status-line"><span class="live-dot"></span><span>DATABASE ONLINE</span><span class="record-total" id="totalCount">0 RECORDS</span></div></div>
   <button id="settingsToggle" class="settings-icon" type="button" aria-expanded="false" aria-controls="settingsPanel" aria-label="Display settings">⚙</button>
 </header>
@@ -17,10 +16,11 @@
   <aside class="sidebar">
     <div class="side-title">DIRECTORY</div>
     <nav id="sheetNav" aria-label="Database categories"></nav>
+    <a class="discord-link" href="https://discord.gg/WENhpGJUa9" target="_blank" rel="noopener noreferrer"><span class="discord-mark">✦</span><span>JOIN THE DISCORD</span><span class="discord-arrow">↗</span></a>
   </aside>
   <section class="workspace">
     <div class="hero-line"><div><h1 id="pageTitle">ALL RESOURCES</h1><p id="pageDescription" hidden></p></div><div class="hero-stats"><strong id="recordCount">0</strong><span>VISIBLE ROWS</span></div></div>
-    
+    <div class="search-row"><label class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="Search resources..." aria-label="Search all resources" autocomplete="off"></label></div>
     <section id="settingsPanel" class="settings" hidden>
       <div class="setting"><label for="fontScale">TEXT SIZE</label><input id="fontScale" type="range" min="13" max="19" value="15"><output id="fontValue">15px</output></div>
       <div class="setting"><label for="density">ROW SPACING</label><select id="density"><option value="compact">Compact</option><option value="normal">Comfortable</option></select></div>
