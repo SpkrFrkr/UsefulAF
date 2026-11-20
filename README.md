@@ -14,7 +14,7 @@ A database to find links to:
 - Useful Software & Websites
 - VR Mods
 
-Direct links to my own modlist creations:
+Direct links to my own modlist creations & how to support or connect for more:
 - PEAK modlist: https://old.thunderstore.io/c/peak/p/SpkrFrkr/PEAK_REDUX/
 - PEAK resource pack: https://old.thunderstore.io/c/peak/p/SpkrFrkr/SPKR_FRKR_MIXTAPE/
 - Discord: https://discord.gg/WENhpGJUa9 
