@@ -174,3 +174,11 @@ tbody tr:hover:not(.section-row) td{border-bottom-color:#71345f!important}
 #resourceTable thead{position:relative;z-index:20}
 #resourceTable thead th{position:sticky;top:0;z-index:21;background-color:#101d2b!important;background-image:linear-gradient(180deg,#142536 0%,#101d2b 100%)!important;opacity:1!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:0 2px 0 #35516a,0 5px 12px #0009!important}
 #resourceTable tbody td{padding-top:8px!important;padding-bottom:8px!important}
+
+/* 2.1.3: compact, branded community links */
+.social-links{margin-top:18px;padding-top:14px;border-top:1px solid #35435a;display:flex;flex-direction:column;gap:8px}
+.social-links-heading{color:var(--yellow);font-size:calc(var(--font)*.83);font-weight:800;letter-spacing:.14em;margin:0 0 3px;text-transform:uppercase}
+.social-link{display:flex;align-items:center;gap:11px;padding:10px 12px;color:var(--yellow)!important;text-decoration:none;border:1px solid #3d405a;border-radius:5px;background:#101a29;transition:background .15s,border-color .15s}
+.social-link:hover,.social-link:focus-visible{background:#2a1730;border-color:var(--pink);outline-offset:2px}
+.social-logo{width:22px;height:22px;flex:none;display:block}
+.social-arrow{margin-left:auto;font-size:1.05em}
