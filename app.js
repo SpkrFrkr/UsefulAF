@@ -9,7 +9,7 @@ function savePrefs(){localStorage.setItem(SETTINGS_KEY,JSON.stringify(prefs))}
 function safeUrl(value){try{const u=new URL(value);return ['http:','https:'].includes(u.protocol)?u.href:null}catch{return null}}
 function isUrl(v){return !!safeUrl(String(v||'').trim())}
 function clean(v){return String(v??'').trim()}
-function isSection(row){const title=clean(row[0]).toUpperCase();return (title.startsWith('VARIOUS SHOPS') || (row.filter(v=>clean(v)).length===1 && !row.some(isUrl)))}
+function isSection(row){const title=clean(row[0]).toUpperCase();return (title.startsWith('VARIOUS SHOPS') || (!row.some(isUrl) && !!title && row.slice(1).every(v=>!clean(v)||['SPECIALTIES','SHIPPING','PLATFORMS','DETAILS','DESCRIPTION'].includes(clean(v).toUpperCase()))))}
 function keyFor(sheetIndex,rowIndex,row){return `${sheetIndex}:${rowIndex}:${clean(row[0]).toLowerCase()}`}
 function domainIcon(url){try{return `https://www.google.com/s2/favicons?domain_url=${encodeURIComponent(url)}&sz=128`}catch{return ''}}
 function escapeText(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
