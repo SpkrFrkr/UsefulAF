@@ -20,6 +20,3 @@ Direct links to my own modlist creations & how to support or connect for more:
 
 - Discord: https://discord.gg/WENhpGJUa9 
 - Kofi Donations: https://ko-fi.com/spkrfrkr
-
-For Those that don't navigate Github often here is a direct link to the website:
-- https://spkrfrkr.github.io/UsefulAF/
