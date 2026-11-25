@@ -38,5 +38,5 @@ function applyPrefs(){document.body.classList.remove('comfortable')}
 $('searchInput').addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(render,90)});
 $('settingsToggle').addEventListener('click',()=>{const panel=$('settingsPanel');panel.hidden=!panel.hidden;$('settingsToggle').setAttribute('aria-expanded',String(!panel.hidden))});
 $('resetSettings').addEventListener('click',()=>{prefs={widths:{},orders:{}};savePrefs();applyPrefs();render()});
-async function start(){try{const res=await fetch(DATA_URL);if(!res.ok)throw new Error('Could not load database');db=await res.json();applyPrefs();render()}catch(e){$('pageTitle').textContent='DATABASE OFFLINE';$('pageDescription').textContent='Open this website through GitHub Pages or a local web server. Do not open index.html directly.'}}
+async function start(){try{db=JSON.parse(document.getElementById('embeddedData').textContent);applyPrefs();render()}catch(e){$('pageTitle').textContent='DATABASE OFFLINE';$('pageDescription').textContent='Open this website through GitHub Pages or a local web server. Do not open index.html directly.'}}
 start();
